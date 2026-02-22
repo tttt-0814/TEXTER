@@ -10,20 +10,7 @@ TEXTER explains model decisions by translating decision-critical visual features
 ## Highlights
 - Ready-to-run demo script `demo_texter.py` for ImageNet validation samples.
 - Concept generation pipeline `generate_concepts.py` (LLM + VLM) with reusable cached concept files.
-- Optional SAE training script `train_sae.py` for rebuilding sparse concept dictionaries.
 - Multi-model support: `resnet50`, `resnet18`, `vit`, `dino_vits8`, `dino_resnet50`.
-- Included pretrained aligners and SAE checkpoints under `pretrained_models/`.
-
-## Repository map
-- `demo_texter.py`: entry point to run TEXTER and save ranked textual explanations + visualizations.
-- `generate_concepts.py`: generates class-level (LLM) and image-level (VLM) concept candidates.
-- `train_sae.py`: trains Top-K SAE from extracted backbone features.
-- `run_demo_texter_all_models.sh`: convenience script to run TEXTER for multiple backbones.
-- `run_generate_concepts_all_models.sh`: convenience script to generate concepts for multiple backbones.
-- `pretrained_models/`: pretrained linear aligners, SAE checkpoints, and DINO linear heads.
-- `Concepts/`: generated concept cache (`per_class`, `per_image`) used by TEXTER.
-- `results_demo/`: saved explanations and visualization outputs.
-- `src/`: core implementation (TEXTER, concept generator, text-to-concept alignment, SAE, visualization).
 
 ## Setup
 1) Clone the repository:
@@ -31,7 +18,7 @@ TEXTER explains model decisions by translating decision-critical visual features
 git clone <your-repo-url> && cd TEXTER
 ```
 
-2) Set up a Python environment (Python 3.10+ recommended) and install required dependencies for this project.
+2) Set up a Python environment and install required dependencies for this project.
 
 3) Download pretrained models first:
 ```bash
@@ -95,25 +82,25 @@ bash run_demo_texter_all_models.sh \
 ```
 
 ## Outputs
-TEXTER outputs are saved under:
-
-- `results_demo/<model_name>/args.json`
-- `results_demo/<model_name>/explanations/<image_stem>/<pred_class>/results.json`
-- `results_demo/<model_name>/explanations/<image_stem>/<pred_class>/visualizations/*.png`
-
 Generated concept cache structure:
 
 - `Concepts/ImageNet/val/<model_name>/per_class/<class_name>/concepts_100.json`
 - `Concepts/ImageNet/val/<model_name>/per_image/<image_name>/<class_name>/concepts_vlm_30.json`
 - `Concepts/ImageNet/val/<model_name>/per_image/<image_name>/<class_name>/concepts_all.json`
 
+TEXTER outputs are saved under:
+
+- `results_demo/<model_name>/args.json`
+- `results_demo/<model_name>/explanations/<image_stem>/<pred_class>/results.json`
+- `results_demo/<model_name>/explanations/<image_stem>/<pred_class>/visualizations/*.png`
+
 ## Notes
 - `generate_concepts.py` requires an OpenAI API key (`--openai_api_key` or `OPENAI_API_KEY`).
 - `demo_texter.py` expects generated concepts in `--concepts_data_path`; missing files trigger on-the-fly concept generation.
 - `dino_vits8` and `dino_resnet50` use `torch.hub` loading from `facebookresearch/dino` at runtime.
-- The MACO implementation is based on Horama: `https://github.com/serre-lab/Horama`.
-- The SAE implementation is based on Overcomplete: `https://github.com/KempnerInstitute/overcomplete`.
-- Aligner-related implementation and models are based on Text-to-concept: `https://github.com/k1rezaei/Text-to-concept`.
+- The MACO implementation is based on Horama: https://github.com/serre-lab/Horama.
+- The SAE implementation is based on Overcomplete: https://github.com/KempnerInstitute/overcomplete.
+- Aligner-related implementation and models are based on Text-to-concept: https://github.com/k1rezaei/Text-To-Concept.
 
 ## Citation
 If you use this repository in your research, please cite:
