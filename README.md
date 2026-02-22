@@ -7,10 +7,9 @@ TEXTER explains model decisions by translating decision-critical visual features
 
 ![TEXTER Qualitative Results Overview](images/overview.jpg)
 
-## Method Overview
-First, we use MACO, a feature visualization method, to generate concept images that emphasize decision-critical features.  
-At this stage, SAE is applied to improve feature disentanglement and interpretability.  
-Next, the generated concept images are projected into CLIP's joint space using an aligner trained to bridge the classifier feature space and the CLIP image encoder space, and relevant text concepts are retrieved.
+The figure below presents an overview of the TEXTER pipeline.  
+We first use MACO-based feature visualization to generate concept images that emphasize decision-critical features, and apply SAE to improve feature disentanglement and interpretability.  
+These concept images are then projected into CLIP's joint space via an aligner trained to bridge the classifier feature space and the CLIP image encoder space, enabling retrieval of relevant textual concepts.
 
 ![TEXTER Method Overview](images/texter.jpg)
 
