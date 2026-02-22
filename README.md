@@ -5,7 +5,8 @@ ___
 Official implementation of **TEXTER**, proposed in *"Zero-Shot Textual Explanations via Translating Decision-Critical Features"*.
 TEXTER explains model decisions by translating decision-critical visual features into ranked textual concepts.
 
-![TEXTER qualitative example](results_demo/resnet50/explanations/ILSVRC2012_val_00000293/sturgeon/visualizations/00000_ILSVRC2012_val_00000293.jpeg.png)
+![TEXTER Qualitative Results Overview](images/overview.jpg)
+*Qualitative TEXTER explanations on ImageNet validation samples.*
 
 ## Highlights
 - Ready-to-run demo script `demo_texter.py` for ImageNet validation samples.
