@@ -6,7 +6,14 @@ Official implementation of **TEXTER**, proposed in *"Zero-Shot Textual Explanati
 TEXTER explains model decisions by translating decision-critical visual features into ranked textual concepts.
 
 ![TEXTER Qualitative Results Overview](images/overview.jpg)
-*Qualitative TEXTER explanations on ImageNet validation samples.*
+
+## Method Overview
+First, we use MACO, a feature visualization method, to generate concept images that emphasize decision-critical features.  
+At this stage, SAE is applied to improve feature disentanglement and interpretability.  
+Next, the generated concept images are projected into CLIP's joint space using an aligner trained to bridge the classifier feature space and the CLIP image encoder space, and relevant text concepts are retrieved.
+
+![TEXTER Method Overview](images/texter.jpg)
+
 
 ## Highlights
 - Ready-to-run demo script `demo_texter.py` for ImageNet validation samples.
