@@ -2,6 +2,7 @@
 from pathlib import Path
 import argparse
 import json
+from telnetlib import IP
 import torch
 
 
@@ -205,7 +206,9 @@ def main():
         pred_prob = float(top_probs[0].item())
         gt_label = int(labels[0].item())
         gt_class_name = (
-            class_names[gt_label] if class_names and gt_label < len(class_names) else str(gt_label)
+            class_names[gt_label]
+            if class_names and gt_label < len(class_names)
+            else str(gt_label)
         )
         compact_result = {
             "image_filename": filename,

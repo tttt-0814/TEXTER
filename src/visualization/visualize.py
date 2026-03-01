@@ -34,7 +34,7 @@ def visualize_ranked_concepts(
         img_np = np.stack([img_np] * 3, axis=-1)
     img_np = np.clip(img_np, 0.0, 1.0)
 
-    lines = [f"Pred: {pred_label} ({pred_prob:.4f})"]
+    lines = ["Selected concepts (similarity)"]
     for rank, (concept, score) in enumerate(ranked_concepts[:topk], start=1):
         lines.append(f"{rank:02d}. {concept} ({score:.4f})")
 
@@ -46,7 +46,10 @@ def visualize_ranked_concepts(
 
     axes[0].imshow(img_np)
     axes[0].axis("off")
-    axes[0].set_title("Input", fontsize=10)
+    axes[0].set_title(
+        f"Input  |  Pred: {pred_label} ({pred_prob:.4f})",
+        fontsize=10,
+    )
 
     text_ax = axes[1]
     if with_maco:
@@ -62,6 +65,12 @@ def visualize_ranked_concepts(
         va="top",
         fontsize=10,
         family="monospace",
+        bbox=dict(
+            boxstyle="round,pad=0.4",
+            facecolor="#E8F2FF",
+            edgecolor="#1F5FBF",
+            linewidth=1.5,
+        ),
     )
 
     fig.tight_layout()
