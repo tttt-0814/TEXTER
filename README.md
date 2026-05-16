@@ -1,4 +1,4 @@
-# TEXTER: Zero-Shot Textual Explanations via Translating Decision-Critical Features
+#【CVPR 2026 Findings】TEXTER: Zero-Shot Textual Explanations via Translating Decision-Critical Features
 [📝 Paper](https://arxiv.org/abs/2512.07245) | [📌 Citation](#citation)
 ___
 
